@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "991815449175",
+    "project_id": "gestion-de-eventos-b5bdb",
+    "storage_bucket": "gestion-de-eventos-b5bdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991815449175:android:c396bdab643b67acc3c112",
+        "android_client_info": {
+          "package_name": "com.app.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_IWPgvDj5TeGCMy5-er33fziitbYVi8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

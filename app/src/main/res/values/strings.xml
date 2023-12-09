@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Gestion de Eventos</string>
+
+    <!--Main Activity-->
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="btn_register">Registar</string>
+
+    <!--Register Activity-->
+    <string name="CrearCuenta">Registrar Usuario</string>
+    <string name="txtNombre">Nombres</string>
+    <string name="txtCorreo">Email</string>
+    <string name="txtPassword">Contraseña</string>
+    <string name="txtConfigPassword">Confirmar contraseña</string>
+    <string name="RegistrarUsuario">Registrar</string>
+    <string name="Tengounacuenta">Tengo una cuenta</string>
+
+    <!--Home Activity-->
+    <string name="CerrarSesion">Salir</string>
+    <string name="BienvenidoHome">Bienvenido(a)</string>
+    <string name="NombresHome">--</string>
+    <string name="CorreoHome">--</string>
+    <string name="ListarEvento">Ver Eventos</string>
+    <string name="AgregarEvento">Nuevo Evento</string>
+    <string name="ViewPerfil">Perfil</string>
+
+    <!--Login Activity-->
+    <string name="TittleLogin">Iniciar Sesión</string>
+    <string name="txtEmailValid">Email</string>
+    <string name="txtPasswordValid">Contraseña</string>
+    <string name="btnLogin">Ingresar</string>
+    <string name="UserNew">¿No tienes una cuenta? Registrate</string>
+
+    <!--Agregar Evento Activity-->
+    <string name="Uid_user">Uid del usuario</string>
+    <string name="TittlefrmEvento">Información del evento</string>
+    <string name="txtNombreEvento">Nombre del evento</string>
+    <string name="txtDescripcion">Descripción</string>
+    <string name="btnShowCalendar">Calendario</string>
+    <string name="btnShowTime">Reloj</string>
+    <string name="txtFecha">Fecha del evento</string>
+    <string name="txtHora">Hora de inicio</string>
+    <string name="txtOrganizador">Organizador</string>
+
+    <!--Lista Eventos Activity-->
+    <string name="TittleListEvento">Lista de Eventos</string>
+
+    <!--Ver Evento Activity-->
+    <string name="TittleViewEvento">Información del evento</string>
+    <string name="viewOrganizador">Organizador</string>
+    <string name="viewFecha">Fecha</string>
+    <string name="viewHora">Hora</string>
+    <string name="viewDescripcion">Descripción</string>
+
+    <!--Ver Perfil Activiry-->
+    <string name="TittleViewPerfil">Información del usuario</string>
+    <string name="EditName">Editar nombre</string>
+    <string name="EditEmail">Editar correo</string>
+    <string name="viewCorreoPerfil">Correo | Usuario</string>
+    <string name="viewPasswordPerfil">Contraseña</string>
+    <string name="RestorePassword">Cambiar contraseña</string>
+    <!--Form Edit info User Activity-->
+    <string name="TittleFormEditUser">Información del usuario</string>
+    <string name="NombreFormEdit">Nombre</string>
+    <string name="EmailFormEdit">Email</string>
+    <string name="ActPasswordFormEdit">Contraseña actual</string>
+    <string name="NewPasswordFormEdit">Nueva contraseña</string>
+    <string name="ConfNewPassword">Confirmar nueva contraseña</string>
+</resources>
