@@ -5,8 +5,9 @@
         <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorOnSecondary">@color/colorPrimaryDark</item>
-
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+    <style name="Base.Theme.Gestion_Eventos2" parent="Theme.MaterialComponents.Light.NoActionBar">
     </style>
 
     <style name="Theme.Gestion_Eventos" parent="Base.Theme.Gestion_Eventos" />

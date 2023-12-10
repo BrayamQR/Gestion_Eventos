@@ -15,7 +15,10 @@ import android.widget.Toast;
 import com.app.myapplication.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -80,6 +83,7 @@ public class EditEmailForm extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Toast.makeText(EditEmailForm.this, "Usuario modificado exitosamente", Toast.LENGTH_SHORT).show();
                             LimpiarCampos();
+                            ReautenticarUsuario(correo);
                             SalirAplicacion();
                         }
                         else{
@@ -111,5 +115,35 @@ public class EditEmailForm extends AppCompatActivity {
     private void SalirAplicacion() {
         firebaseAuth.signOut();
         startActivity(new Intent(EditEmailForm.this, MainActivity.class));
+    }
+    private void ReautenticarUsuario(String newEmail) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), password);
+            user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        ActualizarCorreoEnAuth(user, newEmail);
+                    } else {
+                        Toast.makeText(EditEmailForm.this, "Error al reautenticar el usuario", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    private void ActualizarCorreoEnAuth(FirebaseUser user, String newEmail) {
+        user.updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(EditEmailForm.this, "Correo actualizado exitosamente", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(EditEmailForm.this, "Error al actualizar el correo", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

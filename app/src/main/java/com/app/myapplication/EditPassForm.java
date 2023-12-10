@@ -14,7 +14,10 @@ import android.widget.Toast;
 import com.app.myapplication.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -89,7 +92,7 @@ public class EditPassForm extends AppCompatActivity {
                                 if(task.isSuccessful()){
                                     Toast.makeText(EditPassForm.this, "Usuario modificado exitosamente", Toast.LENGTH_SHORT).show();
                                     LimpiarCampos();
-                                    SalirAplicacion();
+                                    CambiarPassword(newpass);
                                 }
                                 else{
                                     Toast.makeText(EditPassForm.this, "Error al modificar el usuario", Toast.LENGTH_SHORT).show();
@@ -129,5 +132,33 @@ public class EditPassForm extends AppCompatActivity {
     private void SalirAplicacion() {
         firebaseAuth.signOut();
         startActivity(new Intent(EditPassForm.this, MainActivity.class));
+    }
+    private void CambiarPassword(String newPassword) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), password);
+            user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> reauthTask) {
+                    if (reauthTask.isSuccessful()) {
+                        user.updatePassword(newPassword).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> updateTask) {
+                                if (updateTask.isSuccessful()) {
+                                    Toast.makeText(EditPassForm.this, "Contraseña cambiada exitosamente", Toast.LENGTH_SHORT).show();
+                                    SalirAplicacion();
+                                } else {
+                                    Toast.makeText(EditPassForm.this, "Error al cambiar la contraseña", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    } else {
+
+                        Toast.makeText(EditPassForm.this, "Error al reautenticar el usuario", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 }
